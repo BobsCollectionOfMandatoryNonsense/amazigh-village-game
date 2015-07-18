@@ -1,0 +1,17 @@
+.iml
+.idea/
+.gradle/
+build/
+desktop/
+gradle/
+.gradle
+.properties
+.class
+.jar
+gradlew
+gradlew.bat
+amazigh-village-game.iml
+build.gradle
+gradle.properties
+local.properties
+settings.gradle
