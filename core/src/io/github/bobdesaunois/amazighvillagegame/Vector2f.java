@@ -3,8 +3,7 @@ package io.github.bobdesaunois.amazighvillagegame;
 public class Vector2f
 {
 
-    private float x,
-            y;
+    private float x, y;
 
     public float getX () { return x; }
     public float getY () { return y; }
@@ -14,6 +13,14 @@ public class Vector2f
 
         this.x = x;
         this.y = y;
+
+    }
+
+    public void translate (Vector2f translatePos)
+    {
+
+        x += translatePos.getX ();
+        y += translatePos.getY ();
 
     }
 
