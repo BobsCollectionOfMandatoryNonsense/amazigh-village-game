@@ -1,5 +1,6 @@
 package io.github.bobdesaunois.amazighvillagegame;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Scene {
@@ -24,10 +25,17 @@ public class Scene {
 
     }
 
-    public void get (int index)
+    public GameObject getObject (int index)
     {
 
+        return gameObjects.get (index);
 
+    }
+
+    public Iterator<GameObject> getObjectIterator ()
+    {
+
+        return gameObjects.iterator();
 
     }
 

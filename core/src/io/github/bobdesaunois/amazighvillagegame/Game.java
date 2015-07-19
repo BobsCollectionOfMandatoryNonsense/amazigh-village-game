@@ -10,6 +10,7 @@ public class Game extends ApplicationAdapter {
 
     Render render;
     Input input;
+    Camera camera;
 
 	@Override
 	public void create () {

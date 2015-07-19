@@ -3,7 +3,6 @@ package io.github.bobdesaunois.amazighvillagegame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 
-
 public class Input extends InputAdapter {
 
     private Vector2f pos;
