@@ -9,7 +9,11 @@
     <facet type="java-gradle" name="Java-Gradle">
       <configuration>
         <option name="BUILD_FOLDER_PATH" value="$MODULE_DIR$/build" />
+<<<<<<< HEAD
         <option name="BUILDABLE" value="false" />
+=======
+        <option name="BUILDABLE" value="true" />
+>>>>>>> parent of b1a338b... Max commit
       </configuration>
     </facet>
   </component>
