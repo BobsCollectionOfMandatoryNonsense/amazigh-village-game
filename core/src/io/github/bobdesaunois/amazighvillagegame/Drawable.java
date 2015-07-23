@@ -29,8 +29,4 @@ abstract class Drawable
 
 }
 
-//hoidetyfustering
-
-
-
-//iksnaphetniet.com
+//hoidetyfus
