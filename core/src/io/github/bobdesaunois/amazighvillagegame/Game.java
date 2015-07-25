@@ -10,11 +10,21 @@ public class Game extends ApplicationAdapter
 {
 
     private static Render render;
-    private static Input input;
-    private static Scene activeScene;
+    private static Input  input;
+    private static Logic  logic;
+    private static boolean running = false;
 
-    public static Render getRender ()      { return render; }
-    public static Input getInput ()        { return input; }
+    public static Render getRender ()       { return render; }
+    public static Input  getInput ()        { return input; }
+    public static Logic  getLogic ()        { return logic; }
+    public static boolean isRunning ()      { return running; }
+
+    public Game ()
+    {
+
+        running = true;
+
+    }
 
     public void initialization ()
     {
@@ -31,8 +41,11 @@ public class Game extends ApplicationAdapter
 	@Override
 	public void create () {
 
-        render = new Render ();
-        input = new Input ();
+        render  = new Render ();
+        input   = new Input ();
+        logic   = new Logic ();
+
+        logic.start ();
 
         initialization ();
 
