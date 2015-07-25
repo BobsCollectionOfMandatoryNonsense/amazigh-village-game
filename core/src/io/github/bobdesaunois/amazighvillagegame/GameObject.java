@@ -10,12 +10,12 @@ public class GameObject extends Drawable
 
     public Vector2f getPos () { return pos; }
 
-    public GameObject (GameObjectType type, String texture, Vector2f pos)
+    public GameObject (GameObjectType type, Vector2f pos)
     {
 
         this.type = type;
         this.pos = pos;
-        setTexture(texture);
+        setTexture (type.getTexture ());
 
     }
 

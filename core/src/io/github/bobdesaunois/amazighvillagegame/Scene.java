@@ -10,8 +10,8 @@ public class Scene
     private List<GameObject> gameObjects;
     private String title;
 
-    public List<GameObject> getGameObjects ()   { return gameObjects; }
-    public String getTitle ()                   { return title; }
+    public List<GameObject> getElements ()  { return gameObjects; }
+    public String getTitle ()               { return title; }
 
     public Scene (String title)
     {
@@ -41,12 +41,5 @@ public class Scene
         return gameObjects;
 
     }
-
-//    public Iterator<GameObject> getObjectIterator ()
-//    {
-//
-//        return gameObjects.iterator();
-//
-//    }
 
 }
