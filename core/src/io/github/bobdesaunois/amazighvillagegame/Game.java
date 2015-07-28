@@ -1,10 +1,6 @@
 package io.github.bobdesaunois.amazighvillagegame;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter
 {
@@ -29,25 +25,20 @@ public class Game extends ApplicationAdapter
     public void initialization ()
     {
 
-        SceneManager.addScene (new Scene ("TestScene"));
-        SceneManager.getScene ("TestScene").addToScene (new GameObject (GameObjectType.BAD_LOGIC_LOGO, new Vector2f (400, 400)));
-        SceneManager.getScene ("TestScene").addToScene (new GameObject (GameObjectType.BAD_LOGIC_LOGO, new Vector2f (10, 400)));
-        SceneManager.getScene ("TestScene").addToScene (new GameObject (GameObjectType.BAD_LOGIC_LOGO, new Vector2f (1200, 400)));
-        SceneManager.getScene ("TestScene").addToScene (new GameObject (GameObjectType.BAD_LOGIC_LOGO, new Vector2f (800, 400)));
-        SceneManager.setCurrentScene ("TestScene");
+        setupScenes();
 
     }
 
 	@Override
 	public void create () {
 
+        initialization ();
+
         render  = new Render ();
         input   = new Input ();
         logic   = new Logic ();
 
-        logic.start ();
-
-        initialization ();
+        logic.start();
 
 	}
 
@@ -58,5 +49,16 @@ public class Game extends ApplicationAdapter
         input.input ();
 
 	}
+
+    public void setupScenes ()
+    {
+
+        Scene startScene = new Scene ("StartScene");
+        startScene.addTextToScene (new GameText ("Test 1 2 3 test.", new Vector2f (400, 400)));
+        startScene.addElementToScene (new GameObject (GameObjectType.BAD_LOGIC_LOGO, new Vector2f (100, 100)));
+        SceneManager.addScene (startScene);
+        SceneManager.setCurrentScene ("StartScene");
+
+    }
 
 }

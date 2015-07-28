@@ -1,25 +1,26 @@
 package io.github.bobdesaunois.amazighvillagegame;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-abstract class Drawable
-{
+abstract class DrawableText {
 
     private SpriteBatch batch;
-    private Texture texture;
-    private Vector2f pos;
+    private BitmapFont  font;
+    private String      text;
+    private Vector2f    pos;
 
     public Vector2f getPos () { return pos; }
 
-    public void setTexture (String texture) { this.texture = new Texture (texture); }
     public void setPos (Vector2f pos) { this.pos = pos; }
+    public void setText (String text) { this.text = text; }
 
-    public Drawable ()
+    public DrawableText ()
     {
 
-        batch = new SpriteBatch ();
+        batch       = new SpriteBatch ();
+        font        = new BitmapFont (/*Gdx.files.internal("data/rayanfont.fnt"), false*/);
 
     }
 
@@ -27,7 +28,8 @@ abstract class Drawable
     {
 
         batch.begin ();
-        batch.draw (texture, pos.getX (), pos.getY ());
+        font.getData ().setScale (5f);
+        font.draw (batch, text, pos.getX (), pos.getY ());
         batch.end ();
 
     }

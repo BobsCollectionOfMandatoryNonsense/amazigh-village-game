@@ -9,15 +9,20 @@ public class Logic extends Thread {
     public void run ()
     {
 
-        lastRun = System.nanoTime ();
-        currentRun = System.nanoTime ();
+        lastRun     = System.nanoTime ();
+        currentRun  = System.nanoTime ();
 
         while (Game.isRunning ()) {
 
             if (currentRun - lastRun > 1000000)
             {
 
-                System.out.println("Hi, one millisecond has passed!");
+                // Game loop
+
+
+
+                // Game loop end
+
                 lastRun = System.nanoTime ();
 
             } else {

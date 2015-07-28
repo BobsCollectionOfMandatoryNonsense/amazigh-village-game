@@ -24,14 +24,29 @@ public class Render
         if (SceneManager.getCurrentScene() instanceof Scene)
         {
 
-            Iterator<GameObject> gameObjectIterator = SceneManager.getCurrentScene().getElements().iterator();
+            Scene currentScene = SceneManager.getCurrentScene ();
+
+            Iterator<GameObject> gameObjectIterator = currentScene.getElements().iterator();
             while (gameObjectIterator.hasNext())
             {
 
-                GameObject go = gameObjectIterator.next ();
-                go.render (go.getPos());
+                GameObject go = gameObjectIterator.next();
+                go.render ();
 
             }
+
+            Iterator<GameText> gameTextIterator = currentScene.getTexts().iterator();
+            while (gameTextIterator.hasNext())
+            {
+
+                GameText gt = gameTextIterator.next ();
+                gt.render ();
+
+            }
+
+        } else {
+
+            System.out.println ("WARNING: NO SCENE PRESENT IN currentScene SLOT IN SceneManager.");
 
         }
 
