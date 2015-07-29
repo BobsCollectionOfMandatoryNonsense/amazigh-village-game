@@ -10,11 +10,13 @@ abstract class DrawableText {
     private BitmapFont  font;
     private String      text;
     private Vector2f    pos;
+    private float       scale;
 
     public Vector2f getPos () { return pos; }
 
-    public void setPos (Vector2f pos) { this.pos = pos; }
-    public void setText (String text) { this.text = text; }
+    public void setPos (Vector2f pos)   { this.pos = pos; }
+    public void setText (String text)   { this.text = text; }
+    public void setScale (float scale)  { this.scale = scale; }
 
     public DrawableText ()
     {
@@ -28,7 +30,7 @@ abstract class DrawableText {
     {
 
         batch.begin ();
-        font.getData ().setScale (5f);
+        font.getData ().setScale (scale);
         font.draw (batch, text, pos.getX (), pos.getY ());
         batch.end ();
 
