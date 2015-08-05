@@ -1,5 +1,7 @@
 package io.github.bobdesaunois.amazighvillagegame;
 
+import com.badlogic.gdx.Gdx;
+
 public class Vector2f
 {
 
@@ -19,8 +21,11 @@ public class Vector2f
     public void translate (Vector2f translatePos)
     {
 
-        x += translatePos.getX ();
-        y += translatePos.getY ();
+        if (translatePos.getX () != 0)
+            x += translatePos.getX () + Gdx.graphics.getDeltaTime();
+
+        if (translatePos.getY () != 0)
+            y += translatePos.getY () + Gdx.graphics.getDeltaTime();
 
     }
 

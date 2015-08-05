@@ -35,6 +35,13 @@ public class Render
 
             }
 
+            if (SceneManager.getCurrentScene().isPlayable ())
+            {
+
+                Game.getPlayer().getPlayerGO().render ();
+
+            }
+
             Iterator<GameText> gameTextIterator = currentScene.getTexts().iterator();
             while (gameTextIterator.hasNext())
             {
@@ -49,18 +56,6 @@ public class Render
             System.out.println ("WARNING: NO SCENE PRESENT IN currentScene SLOT IN SceneManager.");
 
         }
-
-        ///////////////////////////// TESTING CODE /////////////////////////////
-//
-//        SpriteBatch testBatch = new SpriteBatch();
-//        Texture texture = new Texture ("badlogic.jpg");
-//        testBatch.begin();
-//        testBatch.draw (texture, 0, 0);
-//        testBatch.end();
-
-        ///////////////////////////// TESTING CODE /////////////////////////////
-
-        // Insert render code
 
     }
 

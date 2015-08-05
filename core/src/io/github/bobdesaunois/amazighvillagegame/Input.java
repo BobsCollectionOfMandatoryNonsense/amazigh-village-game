@@ -2,6 +2,7 @@ package io.github.bobdesaunois.amazighvillagegame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
+import com.sun.javafx.image.BytePixelSetter;
 
 public class Input extends InputAdapter
 {
@@ -17,15 +18,45 @@ public class Input extends InputAdapter
 
     }
 
+    public boolean isTouched ()
+    {
+
+        return Gdx.input.isTouched ();
+
+    }
+
+    private void pollMovementInput()
+    {
+
+        if (pos.getX () > Gdx.graphics.getWidth () / 2)
+        {
+
+            System.out.println ("RIGHT");
+            Game.getPlayer().moveRight ();
+
+        } else {
+
+            System.out.println ("LEFT");
+            Game.getPlayer().moveLeft ();
+
+        }
+
+    }
+
     public void input ()
     {
 
-        if (Gdx.input.isTouched())
+        if (isTouched ())
         {
 
             float inputX = (float) Gdx.input.getX();
             float inputY = (float) Gdx.input.getY();
 
+            pos = new Vector2f (inputX, inputY);
+
+            pollMovementInput ();
+
+            // Log positions
             StringBuilder xSb = new StringBuilder();
             xSb.append ("X: ");
             xSb.append (inputX);

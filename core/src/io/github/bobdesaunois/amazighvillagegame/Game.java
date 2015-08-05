@@ -7,17 +7,19 @@ import com.badlogic.gdx.audio.Sound;
 public class Game extends ApplicationAdapter
 {
 
-    private static Render render;
-    private static Input  input;
-    private static Logic  logic;
-    private static boolean running = false;
+    private static Player   player;
+    private static Render   render;
+    private static Input    input;
+    private static Logic    logic;
+    private static Sound    sound;
+    private static boolean  running = false;
 
-    Sound sound;
 
-    public static Render getRender ()       { return render; }
-    public static Input  getInput ()        { return input; }
-    public static Logic  getLogic ()        { return logic; }
-    public static boolean isRunning ()      { return running; }
+    public static Player    getPlayer ()        { return player; }
+    public static Render    getRender ()        { return render; }
+    public static Input     getInput ()         { return input; }
+    public static Logic     getLogic ()         { return logic; }
+    public static boolean   isRunning ()        { return running; }
 
     public Game ()
     {
@@ -36,15 +38,16 @@ public class Game extends ApplicationAdapter
 	@Override
 	public void create () {
 
-        initialization ();
-
-        // Music
-        sound = Gdx.audio.newSound(Gdx.files.internal("guiles-theme.mp3"));
-        sound.play ();
-
+        player = new Player (new GameObject (GameObjectType.CHARACTER_MALE, new Vector2f (0, 0)));
         render  = new Render ();
         input   = new Input ();
         logic   = new Logic ();
+
+        initialization ();
+
+        // Music
+        sound = Gdx.audio.newSound (Gdx.files.internal ("guiles-theme.mp3"));
+        sound.play ();
 
         logic.start();
 
@@ -62,24 +65,18 @@ public class Game extends ApplicationAdapter
     public void dispose ()
     {
 
-//        sound.dispose ();
+        sound.dispose ();
 
     }
 
     public void setupScenes ()
     {
 
-        Scene startScene = new Scene ("StartScene");
+        Scene startScene = new Scene ("StartScene", true);
 
         // Background
-        startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector2f (0, 0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector2f (1880, 0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector2f (1880 * 2, 0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector2f (1880 * 3, 0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector2f (1880 * 4, 0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector2f (1880 * 5, 0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector2f (1880 * 6, 0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector2f (1880 * 7, 0)));
+        for (int i = 0; i < 7; i++)
+            startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector2f (1880 * i, 0)));
         // Background end
 
         // Buildings
@@ -94,10 +91,6 @@ public class Game extends ApplicationAdapter
         startScene.addElementToScene (new GameObject (GameObjectType.PERSON_4, new Vector2f (900, 50)));
         startScene.addElementToScene (new GameObject (GameObjectType.PERSON_5, new Vector2f (1200, 50)));
         // People end
-
-        // Player
-        startScene.addElementToScene (new GameObject (GameObjectType.CHARACTER_MALE, new Vector2f ((Gdx.graphics.getWidth() / 4) + 300, 25)));
-        // Player end
 
         // Speech bubbles
         startScene.addElementToScene (new GameObject (GameObjectType.SPEECH_BUBBLE, new Vector2f (12, 12)));
