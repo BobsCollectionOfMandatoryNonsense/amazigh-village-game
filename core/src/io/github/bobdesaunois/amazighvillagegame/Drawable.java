@@ -14,7 +14,7 @@ abstract class Drawable
     public Vector2f getPos () { return pos; }
 
     public void setTexture (String texture) { this.texture = new Texture (texture); }
-    public void setPos (Vector2f pos) { this.pos = pos; }
+    public void setPos (Vector2f pos)       { this.pos = pos; }
 
     public Drawable ()
     {
@@ -26,8 +26,13 @@ abstract class Drawable
     public void render ()
     {
 
+        final float PLAYER_WIDTH = 300;
+
+        float drawX = (pos.getX () + (Gdx.graphics.getWidth() / 2)) - PLAYER_WIDTH;
+        float drawY = pos.getY ();
+
         batch.begin ();
-        batch.draw (texture, pos.getX (), pos.getY ());
+        batch.draw (texture, drawX, drawY);
         batch.end ();
 
     }

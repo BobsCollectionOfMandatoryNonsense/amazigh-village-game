@@ -15,19 +15,4 @@ public class GameObject extends Drawable {
 
     }
 
-    public void translate (Vector2f translatePos)
-    {
-
-        float oldX = getPos ().getX ();
-        float oldY = getPos ().getY ();
-
-        float newX = translatePos.getX () + Gdx.graphics.getDeltaTime ();
-        float newY = translatePos.getY () + Gdx.graphics.getDeltaTime ();
-
-        Vector2f newPos = new Vector2f (oldX + newX, oldY + newY);
-
-        setPos (newPos);
-
-    }
-
 }
