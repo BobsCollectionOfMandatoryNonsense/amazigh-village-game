@@ -18,3 +18,4 @@ settings.gradle
 android/android.iml
 android/android.iml
 *.iml
+.apk
