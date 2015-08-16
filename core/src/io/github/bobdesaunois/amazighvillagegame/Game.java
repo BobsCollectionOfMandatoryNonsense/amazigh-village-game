@@ -3,11 +3,13 @@ package io.github.bobdesaunois.amazighvillagegame;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class Game extends ApplicationAdapter
 {
 
     private static Player   player;
+    private static Camera   camera;
     private static Render   render;
     private static Input    input;
     private static Logic    logic;
@@ -15,11 +17,13 @@ public class Game extends ApplicationAdapter
     private static boolean  running = false;
 
 
-    public static Player    getPlayer ()        { return player; }
-    public static Render    getRender ()        { return render; }
-    public static Input     getInput ()         { return input; }
-    public static Logic     getLogic ()         { return logic; }
-    public static boolean   isRunning ()        { return running; }
+    public static Player                getPlayer ()        { return player; }
+    public static OrthographicCamera    getActualCamera ()  { return camera.getCamera (); }
+    public static Camera                getCamera ()        { return camera; }
+    public static Render                getRender ()        { return render; }
+    public static Input                 getInput ()         { return input; }
+    public static Logic                 getLogic ()         { return logic; }
+    public static boolean               isRunning ()        { return running; }
 
     public Game ()
     {
@@ -38,7 +42,8 @@ public class Game extends ApplicationAdapter
 	@Override
 	public void create () {
 
-        player = new Player (new GameObject (GameObjectType.CHARACTER_MALE, new Vector2f (0, 0)));
+        player  = new Player (GameObjectType.CHARACTER_MALE);
+        camera  = new Camera ();
         render  = new Render ();
         input   = new Input ();
         logic   = new Logic ();
@@ -93,8 +98,7 @@ public class Game extends ApplicationAdapter
         // People end
 
         // Speech bubbles
-        startScene.addElementToScene (new GameObject (GameObjectType.SPEECH_BUBBLE, new Vector2f (12, 12)));
-        startScene.addTextToScene (new GameText ("Hallo dit is een test speech bubble.", 3f, new Vector2f (55, 200)));
+//        startScene.addTextToScene (new GameText ("Hallo dit is een test speech bubble.", 3f, new Vector2f (55, 200)));
         // Speech bubbles end
 
         SceneManager.addScene (startScene);

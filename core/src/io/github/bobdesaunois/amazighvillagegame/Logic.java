@@ -19,7 +19,8 @@ public class Logic extends Thread {
 
                 // Game loop
 
-
+                System.out.println (Game.getPlayer().getPos ().getX ());
+                //pls
 
                 // Game loop end
 

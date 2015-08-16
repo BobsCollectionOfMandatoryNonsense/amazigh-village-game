@@ -18,14 +18,14 @@ public class Vector2f
 
     }
 
-    public void translate (Vector2f translatePos)
+    public void translate (Vector2f translation)
     {
 
-        if (translatePos.getX () != 0)
-            x += translatePos.getX () + Gdx.graphics.getDeltaTime();
+        if (translation.getX () != 0)
+            x += translation.getX () + Gdx.graphics.getDeltaTime();
 
-        if (translatePos.getY () != 0)
-            y += translatePos.getY () + Gdx.graphics.getDeltaTime();
+        if (translation.getY () != 0)
+            y += translation.getY () + Gdx.graphics.getDeltaTime();
 
     }
 
