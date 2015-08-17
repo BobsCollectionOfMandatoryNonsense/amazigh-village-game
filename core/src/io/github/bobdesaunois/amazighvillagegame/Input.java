@@ -2,7 +2,8 @@ package io.github.bobdesaunois.amazighvillagegame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
-import com.sun.javafx.image.BytePixelSetter;
+
+import java.util.Iterator;
 
 public class Input extends InputAdapter
 {
@@ -25,21 +26,47 @@ public class Input extends InputAdapter
 
     }
 
-    private void pollMovementInput()
+    private void pollMovementInput ()
     {
 
-        if (pos.getX () > Gdx.graphics.getWidth () / 2)
+        if (pos.getX () > Gdx.graphics.getWidth () - 200)
         {
 
             System.out.println ("RIGHT");
             Game.getPlayer().moveRight ();
 
-        } else {
+        } else if (pos.getX () < 200) {
 
             System.out.println ("LEFT");
             Game.getPlayer().moveLeft ();
 
         }
+
+    }
+
+    private void pollGameObjectInteractions ()
+    {
+
+        Scene currentScene = SceneManager.getCurrentScene ();
+
+        System.out.println ("==================== INTERACTION CHECK START ====================");
+
+        Iterator<GameObject> gameObjectIterator = currentScene.getElements ().iterator ();
+        while (gameObjectIterator.hasNext ())
+        {
+
+            GameObject gameObjectIt = gameObjectIterator.next ();
+
+            if (pos.inside (gameObjectIt.getPos(), gameObjectIt.getWidth(), gameObjectIt.getHeight()))
+            {
+
+                gameObjectIt.interact();
+
+            }
+
+        }
+
+        System.out.println ("===================== INTERACTION CHECK END =====================");
 
     }
 
@@ -49,12 +76,13 @@ public class Input extends InputAdapter
         if (isTouched ())
         {
 
-            float inputX = (float) Gdx.input.getX();
-            float inputY = (float) Gdx.input.getY();
+            float inputX = (float) Gdx.input.getX ();
+            float inputY = (float) Gdx.graphics.getHeight () - Gdx.input.getY ();
 
             pos = new Vector2f (inputX, inputY);
 
             pollMovementInput ();
+            pollGameObjectInteractions();
 
             // Log positions
             StringBuilder xSb = new StringBuilder();

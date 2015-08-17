@@ -29,4 +29,26 @@ public class Vector2f
 
     }
 
+    public boolean inside (Vector2f pos, float height, float width)
+    {
+
+        if
+        (
+            pos.getX () >= x
+         && pos.getX () <= x + width
+         && pos.getY () >= y
+         && pos.getY () <= y + height
+        )
+        {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    }
+
 }

@@ -7,13 +7,15 @@ import java.util.List;
 public class Scene
 {
 
-    private List<GameObject> gameObjects;
-    private List<GameText>   gameTexts;
-    private String           title;
-    private boolean          playable;
+    private List<GameObject>    gameObjects;
+    private List<GameText>      gameTexts;
+    private List<GameText>      dialog;
+    private String              title;
+    private boolean             playable;
 
     public List<GameObject> getElements ()  { return gameObjects; }
     public List<GameText>   getTexts ()     { return gameTexts; }
+    public List<GameText>   getDialog ()    { return dialog; }
     public String           getTitle ()     { return title; }
 
     public boolean isPlayable () { return playable; }
@@ -25,6 +27,7 @@ public class Scene
         this.playable   = playable;
         gameObjects     = new ArrayList<GameObject> ();
         gameTexts       = new ArrayList<GameText> ();
+        dialog          = new ArrayList<GameText> ();
 
     }
 
@@ -42,17 +45,17 @@ public class Scene
 
     }
 
+    public void addDialogToScene (GameText gameText)
+    {
+
+        dialog.add (gameText);
+
+    }
+
     public GameObject getObject (int index)
     {
 
         return gameObjects.get (index);
-
-    }
-
-    public List<GameObject> getObjectList ()
-    {
-
-        return gameObjects;
 
     }
 

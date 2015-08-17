@@ -97,12 +97,12 @@ public class Game extends ApplicationAdapter
         startScene.addElementToScene (new GameObject (GameObjectType.PERSON_5, new Vector2f (1200, 50)));
         // People end
 
-        // Speech bubbles
-//        startScene.addTextToScene (new GameText ("Hallo dit is een test speech bubble.", 3f, new Vector2f (55, 200)));
-        // Speech bubbles end
-
         SceneManager.addScene (startScene);
         SceneManager.setCurrentScene ("StartScene");
+
+        // Speech bubbles
+
+        // Speech bubbles end
 
     }
 
