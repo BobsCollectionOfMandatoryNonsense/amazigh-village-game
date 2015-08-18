@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Vector3;
 
 public class Game extends ApplicationAdapter
 {
@@ -81,20 +82,20 @@ public class Game extends ApplicationAdapter
 
         // Background
         for (int i = 0; i < 7; i++)
-            startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector2f (1880 * i, 0)));
+            startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector3 (1880 * i, 0, 0)));
         // Background end
 
         // Buildings
-        startScene.addElementToScene (new GameObject (GameObjectType.BUILDING_3, new Vector2f (50, 100)));
-        startScene.addElementToScene (new GameObject (GameObjectType.BUILDING_2, new Vector2f (1850, 100)));
+        startScene.addElementToScene (new GameObject (GameObjectType.BUILDING_3, new Vector3 (50, 100, 0)));
+        startScene.addElementToScene (new GameObject (GameObjectType.BUILDING_2, new Vector3 (1850, 100, 0)));
         // Buildings end
 
         // People
-        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_1, new Vector2f (10, 50)));
-        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_2, new Vector2f (400, 50)));
-        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_3, new Vector2f (600, 50)));
-        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_4, new Vector2f (900, 50)));
-        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_5, new Vector2f (1200, 50)));
+        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_1, new Vector3 (10,   50,  0)));
+        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_2, new Vector3 (400,  50,  0)));
+        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_3, new Vector3 (600,  50,  0)));
+        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_4, new Vector3 (900,  50,  0)));
+        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_5, new Vector3 (1200, 50,  0)));
         // People end
 
         SceneManager.addScene (startScene);

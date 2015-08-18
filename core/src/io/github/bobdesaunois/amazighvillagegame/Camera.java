@@ -2,6 +2,7 @@ package io.github.bobdesaunois.amazighvillagegame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Vector3;
 
 public class Camera
 {
@@ -18,11 +19,11 @@ public class Camera
 
     }
 
-    public void translate (Vector2f translation)
+    public void translate (Vector3 translation)
     {
 
-        float translateX = translation.getX ();
-        float translateY = translation.getY ();
+        float translateX = translation.x;
+        float translateY = translation.y;
 
         if (translateX != 0)
             translateX += Gdx.graphics.getDeltaTime();

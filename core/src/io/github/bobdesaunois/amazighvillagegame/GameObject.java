@@ -1,5 +1,7 @@
 package io.github.bobdesaunois.amazighvillagegame;
 
+import com.badlogic.gdx.math.Vector3;
+
 public class GameObject extends Drawable {
 
     private GameObjectType type;
@@ -18,13 +20,32 @@ public class GameObject extends Drawable {
 
     }
 
-    public GameObject (GameObjectType type, Vector2f pos)
+    public GameObject (GameObjectType type, Vector3 pos)
     {
 
         this.type = type;
         setPos (pos);
-        setTexture (type.getTexture ());
+        setTexture(type.getTexture());
 
     }
 
+    public boolean inside (Vector3 pos)
+    {
+
+        if
+        (
+            pos.x >= this.pos.x
+         && pos.x <= this.pos.x + type.getWidth ()
+         && pos.y >= this.pos.y
+         && pos.y <= this.pos.y + type.getHeight ()
+        )
+        {
+
+            return true;
+
+        }
+
+        return false;
+
+    }
 }

@@ -2,18 +2,19 @@ package io.github.bobdesaunois.amazighvillagegame;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 
 abstract class Drawable
 {
 
     private SpriteBatch batch;
     private Texture texture;
-    private Vector2f pos;
+    protected Vector3 pos;
 
-    public Vector2f getPos () { return pos; }
+    public Vector3 getPos () { return pos; }
 
     public void setTexture (String texture) { this.texture = new Texture (texture); }
-    public void setPos (Vector2f pos)       { this.pos = pos; }
+    public void setPos (Vector3 pos)        { this.pos = pos; }
 
     public Drawable ()
     {
@@ -27,8 +28,8 @@ abstract class Drawable
 
         final float PLAYER_WIDTH = 300;
 
-        float drawX = pos.getX ();
-        float drawY = pos.getY ();
+        float drawX = pos.x;
+        float drawY = pos.y;
 
         batch.setProjectionMatrix (Game.getActualCamera().combined);
         batch.begin ();

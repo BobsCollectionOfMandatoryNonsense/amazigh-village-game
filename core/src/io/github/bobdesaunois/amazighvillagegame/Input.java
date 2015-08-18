@@ -2,20 +2,21 @@ package io.github.bobdesaunois.amazighvillagegame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.math.Vector3;
 
 import java.util.Iterator;
 
 public class Input extends InputAdapter
 {
 
-    private Vector2f pos;
+    private Vector3 pos;
 
-    public Vector2f getPos () { return pos; }
+    public Vector3 getPos () { return pos; }
 
     public Input ()
     {
 
-        pos = new Vector2f (0, 0);
+        pos = new Vector3 (0, 0, 0);
 
     }
 
@@ -29,13 +30,13 @@ public class Input extends InputAdapter
     private void pollMovementInput ()
     {
 
-        if (pos.getX () > Gdx.graphics.getWidth () - 200)
+        if (pos.x > Gdx.graphics.getWidth () - 200)
         {
 
             System.out.println ("RIGHT");
             Game.getPlayer().moveRight ();
 
-        } else if (pos.getX () < 200) {
+        } else if (pos.x < 200) {
 
             System.out.println ("LEFT");
             Game.getPlayer().moveLeft ();
@@ -57,7 +58,7 @@ public class Input extends InputAdapter
 
             GameObject gameObjectIt = gameObjectIterator.next ();
 
-            if (pos.inside (gameObjectIt.getPos(), gameObjectIt.getWidth(), gameObjectIt.getHeight()))
+            if (gameObjectIt.inside (pos))
             {
 
                 gameObjectIt.interact();
@@ -79,7 +80,7 @@ public class Input extends InputAdapter
             float inputX = (float) Gdx.input.getX ();
             float inputY = (float) Gdx.graphics.getHeight () - Gdx.input.getY ();
 
-            pos = new Vector2f (inputX, inputY);
+            pos = new Vector3 (inputX, inputY, 0);
 
             pollMovementInput ();
             pollGameObjectInteractions();
