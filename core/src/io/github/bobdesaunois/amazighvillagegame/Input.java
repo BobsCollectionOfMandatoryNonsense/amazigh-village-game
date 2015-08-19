@@ -10,13 +10,16 @@ public class Input extends InputAdapter
 {
 
     private Vector3 pos;
+    private Vector3 truePos;
 
-    public Vector3 getPos () { return pos; }
+    public Vector3 getPos ()        { return pos; }
+    public Vector3 getTruePos ()    { return truePos; }
 
     public Input ()
     {
 
-        pos = new Vector3 (0, 0, 0);
+        pos     = new Vector3 (0, 0, 0);
+        truePos = new Vector3 (0, 0, 0);
 
     }
 
@@ -30,13 +33,13 @@ public class Input extends InputAdapter
     private void pollMovementInput ()
     {
 
-        if (pos.x > Gdx.graphics.getWidth () - 200)
+        if (truePos.x > Gdx.graphics.getWidth () - 200)
         {
 
             System.out.println ("RIGHT");
             Game.getPlayer().moveRight ();
 
-        } else if (pos.x < 200) {
+        } else if (truePos.x < 200) {
 
             System.out.println ("LEFT");
             Game.getPlayer().moveLeft ();
@@ -78,26 +81,25 @@ public class Input extends InputAdapter
         {
 
             float inputX = (float) Gdx.input.getX ();
-            float inputY = (float) Gdx.graphics.getHeight () - Gdx.input.getY ();
+            float inputY = (float) Gdx.input.getY ();
 
-            pos = new Vector3 (inputX, inputY, 0);
+            pos     = new Vector3 (inputX, inputY, 0);
+            truePos = new Vector3 (inputX, Gdx.graphics.getHeight () - inputY, 0);
+            pos     = Game.getActualCamera().unproject (pos); // This is fucking magic
 
             pollMovementInput ();
             pollGameObjectInteractions();
 
             // Log positions
-            StringBuilder xSb = new StringBuilder();
-            xSb.append ("X: ");
-            xSb.append (inputX);
-            String outputX = xSb.toString();
 
-            StringBuilder ySb = new StringBuilder();
-            ySb.append ("Y: ");
-            ySb.append (inputY);
-            String outputY = ySb.toString();
+            System.out.println("TuePos:");
+            System.out.println("X: " + truePos.x);
+            System.out.println("Y: " + truePos.y);
 
-            System.out.println (outputX);
-            System.out.println (outputY);
+
+            System.out.println ("Pos:");
+            System.out.println ("X: " + pos.x);
+            System.out.println ("Y: " + pos.y);
 
         }
 

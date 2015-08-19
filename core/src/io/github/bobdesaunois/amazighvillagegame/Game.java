@@ -101,10 +101,6 @@ public class Game extends ApplicationAdapter
         SceneManager.addScene (startScene);
         SceneManager.setCurrentScene ("StartScene");
 
-        // Speech bubbles
-
-        // Speech bubbles end
-
     }
 
 }

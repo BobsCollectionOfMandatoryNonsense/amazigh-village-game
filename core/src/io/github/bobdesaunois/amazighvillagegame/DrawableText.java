@@ -48,14 +48,14 @@ abstract class DrawableText {
 
     }
 
-    public void translate (Vector2f translatePos)
+    public void translate (Vector3 translatePos)
     {
 
         float oldX = pos.x;
         float oldY = pos.y;
 
-        float newX = translatePos.getX () + Gdx.graphics.getDeltaTime ();
-        float newY = translatePos.getY () + Gdx.graphics.getDeltaTime ();
+        float newX = translatePos.x + Gdx.graphics.getDeltaTime ();
+        float newY = translatePos.y + Gdx.graphics.getDeltaTime ();
 
         Vector3 newPos = new Vector3 (oldX + newX, oldY + newY, 0);
 
