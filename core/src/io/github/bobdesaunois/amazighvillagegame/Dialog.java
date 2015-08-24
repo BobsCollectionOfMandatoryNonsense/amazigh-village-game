@@ -12,7 +12,7 @@ public class Dialog
     public Dialog (String text, Vector3 pos)
     {
 
-        gameText = new GameText(text, 3f, pos);
+        gameText = new GameText(text, 3f, pos, true);
 
     }
 

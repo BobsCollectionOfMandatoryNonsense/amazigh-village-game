@@ -1,8 +1,11 @@
 package io.github.bobdesaunois.amazighvillagegame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import sun.text.resources.et.CollationData_et;
 
 public class Scene
 {
@@ -25,9 +28,9 @@ public class Scene
 
         this.title      = title;
         this.playable   = playable;
-        gameObjects     = new ArrayList<GameObject> ();
-        gameTexts       = new ArrayList<GameText> ();
-        dialog          = new ArrayList<GameText> ();
+        gameObjects     = Collections.synchronizedList (new ArrayList<GameObject> ());
+        gameTexts       = Collections.synchronizedList (new ArrayList<GameText> ());
+        dialog          = Collections.synchronizedList (new ArrayList<GameText> ());
 
     }
 

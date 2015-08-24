@@ -15,12 +15,14 @@ abstract class DrawableText {
     private String      text;
     private Vector3     pos;
     private float       scale;
+    private boolean     speechBubble;
 
     public Vector3 getPos ()            { return pos; }
 
-    public void setPos (Vector3 pos)    { this.pos = pos; }
-    public void setText (String text)   { this.text = text; }
-    public void setScale (float scale)  { this.scale = scale; }
+    public void setSpeechBubble (boolean speechBubble)  { this.speechBubble = speechBubble; }
+    public void setPos (Vector3 pos)                    { this.pos = pos; }
+    public void setText (String text)                   { this.text = text; }
+    public void setScale (float scale)                  { this.scale = scale; }
 
     public DrawableText ()
     {
@@ -35,10 +37,15 @@ abstract class DrawableText {
     public void render ()
     {
 
-        speechBatch.begin ();
-        speechBatch.setProjectionMatrix (Game.getActualCamera().combined);
-        speechBatch.draw(speechTexture, pos.x - 25, pos.y - 200);
-        speechBatch.end();
+        if (speechBubble)
+        {
+
+            speechBatch.begin ();
+            speechBatch.setProjectionMatrix (Game.getActualCamera ().combined);
+            speechBatch.draw (speechTexture, pos.x - 25, pos.y - 200);
+            speechBatch.end ();
+
+        }
 
         batch.setProjectionMatrix(Game.getActualCamera().combined);
         batch.begin ();

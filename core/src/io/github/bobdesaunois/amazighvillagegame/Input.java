@@ -48,6 +48,13 @@ public class Input extends InputAdapter
 
     }
 
+    private void pollContinue ()
+    {
+
+        Game.changeGameState (GameState.HERO_SELECT);
+
+    }
+
     private void pollGameObjectInteractions ()
     {
 
@@ -87,8 +94,33 @@ public class Input extends InputAdapter
             truePos = new Vector3 (inputX, Gdx.graphics.getHeight () - inputY, 0);
             pos     = Game.getActualCamera().unproject (pos); // This is fucking magic
 
-            pollMovementInput ();
-            pollGameObjectInteractions();
+            switch (Game.getGameState ())
+            {
+
+                case START:
+
+                    pollContinue ();
+
+                break;
+
+                case HERO_SELECT:
+                break;
+
+                case RUNNING:
+
+                    pollMovementInput ();
+                    pollGameObjectInteractions ();
+
+                break;
+
+                case END_GAME:
+                break;
+
+                default:
+                    System.out.println ("Unrecognized gamestate");
+                break;
+
+            }
 
             // Log positions
 

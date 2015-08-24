@@ -5,7 +5,8 @@ public enum GameState {
     START,
     HERO_SELECT,
     RUNNING,
-    MINI_GAME,
     END_GAME;
+
+    public static final GameState DEFAULT_GAMESTATE = START;
 
 }

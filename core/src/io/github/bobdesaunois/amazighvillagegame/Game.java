@@ -9,15 +9,16 @@ import com.badlogic.gdx.math.Vector3;
 public class Game extends ApplicationAdapter
 {
 
-    private static Player   player;
-    private static Camera   camera;
-    private static Render   render;
-    private static Input    input;
-    private static Logic    logic;
-    private static Sound    sound;
-    private static boolean  running = false;
+    private static GameState    gameState;
+    private static Player       player;
+    private static Camera       camera;
+    private static Render       render;
+    private static Input        input;
+    private static Logic        logic;
+    private static Sound        sound;
+    private static boolean      running = false;
 
-
+    public static GameState             getGameState ()     { return gameState; }
     public static Player                getPlayer ()        { return player; }
     public static OrthographicCamera    getActualCamera ()  { return camera.getCamera (); }
     public static Camera                getCamera ()        { return camera; }
@@ -29,14 +30,40 @@ public class Game extends ApplicationAdapter
     public Game ()
     {
 
+        gameState = GameState.DEFAULT_GAMESTATE;
         running = true;
 
     }
 
-    public void initialization ()
+    public static void changeGameState (GameState gameState)
     {
 
-        setupScenes();
+        Game.gameState = gameState;
+
+        switch (gameState)
+        {
+
+            case START:
+                System.out.println ("You can't set the gamestate back to start");
+            break;
+
+            case HERO_SELECT:
+                SceneManager.setCurrentScene ("HeroSelect");
+            break;
+
+            case RUNNING:
+                SceneManager.setCurrentScene ("Game");
+            break;
+
+            case END_GAME:
+                SceneManager.setCurrentScene ("GameOver");
+            break;
+
+            default:
+                System.out.println ("Unrecognized gamestate");
+            break;
+
+        }
 
     }
 
@@ -49,13 +76,14 @@ public class Game extends ApplicationAdapter
         input   = new Input ();
         logic   = new Logic ();
 
-        initialization ();
+        SceneManager.setupScenes ();
+        SceneManager.setCurrentScene (SceneManager.START_SCENE);
 
         // Music
         sound = Gdx.audio.newSound (Gdx.files.internal ("guiles-theme.mp3"));
         sound.play ();
 
-        logic.start();
+        logic.start ();
 
 	}
 
@@ -72,34 +100,6 @@ public class Game extends ApplicationAdapter
     {
 
         sound.dispose ();
-
-    }
-
-    public void setupScenes ()
-    {
-
-        Scene startScene = new Scene ("StartScene", true);
-
-        // Background
-        for (int i = 0; i < 7; i++)
-            startScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector3 (1880 * i, 0, 0)));
-        // Background end
-
-        // Buildings
-        startScene.addElementToScene (new GameObject (GameObjectType.BUILDING_3, new Vector3 (50, 100, 0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.BUILDING_2, new Vector3 (1850, 100, 0)));
-        // Buildings end
-
-        // People
-        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_1, new Vector3 (10,   50,  0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_2, new Vector3 (400,  50,  0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_3, new Vector3 (600,  50,  0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_4, new Vector3 (900,  50,  0)));
-        startScene.addElementToScene (new GameObject (GameObjectType.PERSON_5, new Vector3 (1200, 50,  0)));
-        // People end
-
-        SceneManager.addScene (startScene);
-        SceneManager.setCurrentScene ("StartScene");
 
     }
 
