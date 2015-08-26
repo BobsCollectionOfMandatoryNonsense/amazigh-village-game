@@ -1,6 +1,6 @@
 package io.github.bobdesaunois.amazighvillagegame;
 
-public interface Clickable {
+public interface Interaction {
 
     public void action ();
 

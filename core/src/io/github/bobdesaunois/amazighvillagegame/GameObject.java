@@ -3,13 +3,11 @@ package io.github.bobdesaunois.amazighvillagegame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector3;
 
-import java.util.Vector;
-
 public class GameObject extends Drawable {
 
     private GameObjectType  type;
     private Dialog          dialog;
-    private Clickable       clickable;
+    private Interaction interaction;
 
     public GameObjectType   getType ()      { return type; }
     public float            getWidth ()     { return type.getWidth (); }
@@ -70,9 +68,24 @@ public class GameObject extends Drawable {
 
     }
 
-    public void addClickable (Clickable clickable) {
+    public void interaction ()
+    {
 
-        this.clickable = clickable;
+        interaction.action ();
+
+    }
+
+    public void addInteraction (Interaction interaction)
+    {
+
+        this.interaction = interaction;
+
+    }
+
+    public Interaction getInteraction ()
+    {
+
+        return interaction;
 
     }
 }

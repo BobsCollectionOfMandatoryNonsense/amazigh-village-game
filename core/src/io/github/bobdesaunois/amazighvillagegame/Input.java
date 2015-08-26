@@ -71,19 +71,14 @@ public class Input extends InputAdapter
             if (gameObjectIt.hasInside (pos))
             {
 
+                if (gameObjectIt.getInteraction () instanceof Interaction)
+                    gameObjectIt.interaction ();
 
             }
 
         }
 
         System.out.println ("===================== INTERACTION CHECK END =====================");
-
-    }
-
-    public void pollHeroSelection ()
-    {
-
-
 
     }
 
@@ -111,7 +106,7 @@ public class Input extends InputAdapter
 
                 case HERO_SELECT:
 
-                    pollHeroSelection ();
+                    pollGameObjectInteractions ();
 
                 break;
 

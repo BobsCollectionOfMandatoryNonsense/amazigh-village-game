@@ -9,7 +9,7 @@ import java.util.Map;
 public class SceneManager
 {
 
-    public static final String START_SCENE = "HeroSelect";
+    public static final String START_SCENE = "TitleScreen";
 
     private static Map<String, Scene> scenes = new HashMap<String, Scene>();
     private static Scene currentScene;
@@ -78,18 +78,27 @@ public class SceneManager
             heroSelectScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector3 ((1880 * i) - (GameObjectType.BACKGROUND.getWidth () * 2), 0, 0)));
 
         GameObject characterMale = new GameObject (GameObjectType.CHARACTER_MALE, new Vector3 (400 + GameObjectType.CHARACTER_MALE.getWidth () , 400, 0));
-        characterMale.addClickable (new Clickable ()
-        {
-            @Override public void action ()
-            {
+        characterMale.addInteraction (new Interaction () {
+            @Override
+            public void action () {
 
-                System.out.println ("Hello!");
+                Game.createPlayer (new Player (GameObjectType.CHARACTER_MALE));
+                Game.changeGameState (GameState.RUNNING);
 
             }
         });
         heroSelectScene.addElementToScene (characterMale);
 
         GameObject characterFemale = new GameObject (GameObjectType.CHARACTER_FEMALE, new Vector3 (-400, 400, 0));
+        characterFemale.addInteraction (new Interaction () {
+            @Override
+            public void action () {
+
+                Game.createPlayer (new Player (GameObjectType.CHARACTER_FEMALE));
+                Game.changeGameState (GameState.RUNNING);
+
+            }
+        });
         heroSelectScene.addElementToScene (characterFemale);
 
         heroSelectScene.addTextToScene (new GameText ("Select your hero", 5f, new Vector3 (0 - (Gdx.graphics.getWidth () / 18), 200, 0), false));
