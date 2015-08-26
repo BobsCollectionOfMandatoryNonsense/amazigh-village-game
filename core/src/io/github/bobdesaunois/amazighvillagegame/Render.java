@@ -69,6 +69,16 @@ public class Render
 
             }
 
+            List<Dialog> dialogList = DialogManager.getDialogList ();
+            Iterator<Dialog> dialogIterator = dialogList.iterator ();
+            while (dialogIterator.hasNext ())
+            {
+
+                Dialog dialogIt = dialogIterator.next ();
+                dialogIt.getGameText ().render ();
+
+            }
+
         } else {
 
             System.out.println ("WARNING: NO SCENE PRESENT IN currentScene SLOT IN SceneManager.");

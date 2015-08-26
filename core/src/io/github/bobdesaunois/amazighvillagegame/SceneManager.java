@@ -115,7 +115,7 @@ public class SceneManager
         Scene gameScene = new Scene ("Game", true);
 
         // Background
-        for (int i = 0; i < 7; i++)
+        for (int i = -3; i < 7; i++)
             gameScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector3 (1880 * i, 0, 0)));
         // Background end
 
@@ -127,11 +127,10 @@ public class SceneManager
         // People
         // Riddle person 1
         final GameObject riddlePerson1 = new GameObject (GameObjectType.PERSON_1, new Vector3 (10, 50, 0));
-        riddlePerson1.setDialog (new Dialog ("Hoi", new Vector3 (0, 0, 0)));
+        riddlePerson1.setDialog (new Dialog ("Hoi ik ben raadsel persoon 1", new Vector3 (riddlePerson1.getPos ().x - 200, (riddlePerson1.getPos ().y + riddlePerson1.getHeight () + 200), 0)));
         riddlePerson1.addInteraction (new Interaction () {
             @Override
-            public void action ()
-            {
+            public void action () {
 
                 DialogManager.add (riddlePerson1.getDialog ());
 
@@ -139,11 +138,53 @@ public class SceneManager
         });
         gameScene.addElementToScene (riddlePerson1);
 
+        final GameObject riddlePerson2 = new GameObject (GameObjectType.PERSON_2, new Vector3 (400, 50, 0));
+        riddlePerson2.setDialog (new Dialog ("Hoi ik ben raadsel persoon 2", new Vector3 (riddlePerson2.getPos ().x - 200, (riddlePerson2.getPos ().y + riddlePerson2.getHeight () + 200), 0)));
+        riddlePerson2.addInteraction (new Interaction () {
+            @Override
+            public void action () {
 
-        gameScene.addElementToScene (new GameObject (GameObjectType.PERSON_2, new Vector3 (400, 50, 0)));
-        gameScene.addElementToScene (new GameObject (GameObjectType.PERSON_3, new Vector3 (600, 50, 0)));
-        gameScene.addElementToScene (new GameObject (GameObjectType.PERSON_4, new Vector3 (900, 50, 0)));
-        gameScene.addElementToScene (new GameObject (GameObjectType.PERSON_5, new Vector3 (1200, 50, 0)));
+                DialogManager.add (riddlePerson2.getDialog ());
+
+            }
+        });
+        gameScene.addElementToScene (riddlePerson2);
+
+        final GameObject findPerson1 = new GameObject (GameObjectType.PERSON_3, new Vector3 (600, 50, 0));
+        findPerson1.setDialog (new Dialog ("Hoi ik ben vind persoon 1", new Vector3 (findPerson1.getPos ().x - 200, (findPerson1.getPos ().y + findPerson1.getHeight () + 200), 0)));
+        findPerson1.addInteraction (new Interaction () {
+            @Override
+            public void action () {
+
+                DialogManager.add (findPerson1.getDialog ());
+
+            }
+        });
+        gameScene.addElementToScene (findPerson1);
+
+        final GameObject findPerson2 = new GameObject (GameObjectType.PERSON_4, new Vector3 (900, 50, 0));
+        findPerson2.setDialog (new Dialog ("Hoi ik ben vind persoon 2", new Vector3 (findPerson2.getPos ().x - 200, (findPerson2.getPos ().y + findPerson2.getHeight () + 200), 0)));
+        findPerson2.addInteraction (new Interaction () {
+            @Override
+            public void action () {
+
+                DialogManager.add (findPerson2.getDialog ());
+
+            }
+        });
+        gameScene.addElementToScene (findPerson2);
+
+        final GameObject findPerson3 = new GameObject (GameObjectType.PERSON_5, new Vector3 (1200, 50, 0));
+        findPerson3.setDialog (new Dialog ("Hoi ik ben vind persoon 3", new Vector3 (findPerson3.getPos ().x - 200, (findPerson3.getPos ().y + findPerson3.getHeight () + 200), 0)));
+        findPerson3.addInteraction (new Interaction () {
+            @Override
+            public void action () {
+
+                DialogManager.add (findPerson3.getDialog ());
+
+            }
+        });
+        gameScene.addElementToScene (findPerson3);
         // People end
 
         SceneManager.addScene (gameScene);

@@ -30,21 +30,28 @@ public class Input extends InputAdapter
 
     }
 
-    private void pollMovementInput ()
+    private boolean pollMovementInput ()
     {
+
+        // Clear all dialog on movement
+        DialogManager.clear ();
 
         if (truePos.x > Gdx.graphics.getWidth () - 200)
         {
 
             System.out.println ("RIGHT");
             Game.getPlayer().moveRight ();
+            return true;
 
         } else if (truePos.x < 200) {
 
             System.out.println ("LEFT");
             Game.getPlayer().moveLeft ();
+            return true;
 
         }
+
+        return false;
 
     }
 
@@ -108,8 +115,9 @@ public class Input extends InputAdapter
 
                 case RUNNING:
 
-                    pollMovementInput ();
-                    pollGameObjectInteractions ();
+                    // Only poll gameobject interactions if the movement isn't applied
+                    if ( ! pollMovementInput ())
+                        pollGameObjectInteractions ();
 
                 break;
 

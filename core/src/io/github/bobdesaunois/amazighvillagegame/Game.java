@@ -71,6 +71,8 @@ public class Game extends ApplicationAdapter
 	@Override
 	public void create () {
 
+        DialogManager.clear ();
+
         player  = new Player (GameObjectType.CHARACTER_MALE);
         camera  = new Camera ();
         render  = new Render ();
