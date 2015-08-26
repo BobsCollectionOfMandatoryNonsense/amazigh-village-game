@@ -125,7 +125,21 @@ public class SceneManager
         // Buildings end
 
         // People
-        gameScene.addElementToScene (new GameObject (GameObjectType.PERSON_1, new Vector3 (10, 50, 0)));
+        // Riddle person 1
+        final GameObject riddlePerson1 = new GameObject (GameObjectType.PERSON_1, new Vector3 (10, 50, 0));
+        riddlePerson1.setDialog (new Dialog ("Hoi", new Vector3 (0, 0, 0)));
+        riddlePerson1.addInteraction (new Interaction () {
+            @Override
+            public void action ()
+            {
+
+                DialogManager.add (riddlePerson1.getDialog ());
+
+            }
+        });
+        gameScene.addElementToScene (riddlePerson1);
+
+
         gameScene.addElementToScene (new GameObject (GameObjectType.PERSON_2, new Vector3 (400, 50, 0)));
         gameScene.addElementToScene (new GameObject (GameObjectType.PERSON_3, new Vector3 (600, 50, 0)));
         gameScene.addElementToScene (new GameObject (GameObjectType.PERSON_4, new Vector3 (900, 50, 0)));

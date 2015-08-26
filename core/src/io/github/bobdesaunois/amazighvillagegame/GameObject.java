@@ -10,6 +10,7 @@ public class GameObject extends Drawable {
     private Interaction interaction;
 
     public GameObjectType   getType ()      { return type; }
+    public Dialog           getDialog ()    { return dialog; }
     public float            getWidth ()     { return type.getWidth (); }
     public float            getHeight ()    { return type.getHeight (); }
 
@@ -88,4 +89,5 @@ public class GameObject extends Drawable {
         return interaction;
 
     }
+
 }

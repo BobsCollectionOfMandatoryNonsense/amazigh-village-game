@@ -60,8 +60,6 @@ public class Input extends InputAdapter
 
         Scene currentScene = SceneManager.getCurrentScene ();
 
-        System.out.println ("==================== INTERACTION CHECK START ====================");
-
         Iterator<GameObject> gameObjectIterator = currentScene.getElements ().iterator ();
         while (gameObjectIterator.hasNext ())
         {
@@ -77,8 +75,6 @@ public class Input extends InputAdapter
             }
 
         }
-
-        System.out.println ("===================== INTERACTION CHECK END =====================");
 
     }
 
@@ -121,7 +117,9 @@ public class Input extends InputAdapter
                 break;
 
                 default:
+
                     System.out.println ("Unrecognized gamestate");
+
                 break;
 
             }
