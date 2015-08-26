@@ -7,28 +7,22 @@ import java.util.Vector;
 
 public class GameObject extends Drawable {
 
-    private GameObjectType type;
-    private Dialog dialog;
+    private GameObjectType  type;
+    private Dialog          dialog;
+    private Clickable       clickable;
 
-    public GameObjectType getType ()        { return type; }
-    public float getWidth ()                { return type.getWidth (); }
-    public float getHeight ()               { return type.getHeight (); }
+    public GameObjectType   getType ()      { return type; }
+    public float            getWidth ()     { return type.getWidth (); }
+    public float            getHeight ()    { return type.getHeight (); }
+
     public void setDialog (Dialog dialog)   { this.dialog = dialog; }
-
-    public void interact ()
-    {
-
-        System.out.println ("GameObject interaction");
-//        DialogManager.activate (dialog);
-
-    }
 
     public GameObject (GameObjectType type, Vector3 pos)
     {
 
         this.type = type;
-        setPos (pos);
         setTexture (type.getTexture ());
+        setPos (pos);
 
     }
 
@@ -56,7 +50,7 @@ public class GameObject extends Drawable {
 
     }
 
-    public boolean inside (Vector3 pos)
+    public boolean hasInside (Vector3 pos)
     {
 
         if
@@ -73,6 +67,12 @@ public class GameObject extends Drawable {
         }
 
         return false;
+
+    }
+
+    public void addClickable (Clickable clickable) {
+
+        this.clickable = clickable;
 
     }
 }

@@ -8,7 +8,6 @@ public class Player {
     public static final float  MOVEMENT_SPEED   = 8.75f;
     public static final int    TEXTURE_WIDTH    = 300;
 
-//    private Vector2f pos;
     private GameObject gameObject;
 
     public GameObject getPlayerGO () { return gameObject; }
@@ -17,7 +16,6 @@ public class Player {
     public Player (GameObjectType gameObjectType)
     {
 
-//        this.pos        = new Vector2f (0, 0); // adapt the positions from the GameObject
         this.gameObject = new GameObject (gameObjectType, new Vector3 (0, 0, 0));
 
     }

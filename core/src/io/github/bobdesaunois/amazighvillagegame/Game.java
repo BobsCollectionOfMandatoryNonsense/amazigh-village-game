@@ -27,6 +27,8 @@ public class Game extends ApplicationAdapter
     public static Logic                 getLogic ()         { return logic; }
     public static boolean               isRunning ()        { return running; }
 
+    public static void createPlayer (Player player) { Game.player = player; }
+
     public Game ()
     {
 

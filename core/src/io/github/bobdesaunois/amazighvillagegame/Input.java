@@ -68,16 +68,22 @@ public class Input extends InputAdapter
 
             GameObject gameObjectIt = gameObjectIterator.next ();
 
-            if (gameObjectIt.inside (pos))
+            if (gameObjectIt.hasInside (pos))
             {
 
-                gameObjectIt.interact();
 
             }
 
         }
 
         System.out.println ("===================== INTERACTION CHECK END =====================");
+
+    }
+
+    public void pollHeroSelection ()
+    {
+
+
 
     }
 
@@ -104,6 +110,9 @@ public class Input extends InputAdapter
                 break;
 
                 case HERO_SELECT:
+
+                    pollHeroSelection ();
+
                 break;
 
                 case RUNNING:

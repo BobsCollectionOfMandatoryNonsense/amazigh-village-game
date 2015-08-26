@@ -9,7 +9,7 @@ import java.util.Map;
 public class SceneManager
 {
 
-    public static final String START_SCENE = "TitleScreen";
+    public static final String START_SCENE = "HeroSelect";
 
     private static Map<String, Scene> scenes = new HashMap<String, Scene>();
     private static Scene currentScene;
@@ -73,6 +73,32 @@ public class SceneManager
 
         Scene heroSelectScene = new Scene ("HeroSelect", false);
 
+        // Background
+        for (int i = 0; i < 3; i++)
+            heroSelectScene.addElementToScene (new GameObject (GameObjectType.BACKGROUND, new Vector3 ((1880 * i) - (GameObjectType.BACKGROUND.getWidth () * 2), 0, 0)));
+
+        GameObject characterMale = new GameObject (GameObjectType.CHARACTER_MALE, new Vector3 (400 + GameObjectType.CHARACTER_MALE.getWidth () , 400, 0));
+        characterMale.addClickable (new Clickable ()
+        {
+            @Override public void action ()
+            {
+
+                System.out.println ("Hello!");
+
+            }
+        });
+        heroSelectScene.addElementToScene (characterMale);
+
+        GameObject characterFemale = new GameObject (GameObjectType.CHARACTER_FEMALE, new Vector3 (-400, 400, 0));
+        heroSelectScene.addElementToScene (characterFemale);
+
+        heroSelectScene.addTextToScene (new GameText ("Select your hero", 5f, new Vector3 (0 - (Gdx.graphics.getWidth () / 18), 200, 0), false));
+        // Background end
+
+
+
+        SceneManager.addScene (heroSelectScene);
+
         //////////////////////
         // * Game running * //
         //////////////////////
@@ -104,6 +130,8 @@ public class SceneManager
         //////////////////
 
         Scene gameOverScene = new Scene ("GameOver", false);
+
+        SceneManager.addScene (gameOverScene);
 
     }
 
