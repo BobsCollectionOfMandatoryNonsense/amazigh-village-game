@@ -36,7 +36,7 @@ public class Logic extends Thread {
                         synchronized (titleScreenGOs) {
 
                             Iterator<GameObject> titleScreenGOsIterator = titleScreenGOs.iterator ();
-                            while (titleScreenGOsIterator.hasNext ()) {
+                            iteratorLoop: while (titleScreenGOsIterator.hasNext ()) {
 
                                 GameObject titleScreenGOsIt = titleScreenGOsIterator.next ();
                                 titleScreenGOsIt.move (new Vector3 (-0.3f, 0, 0));
@@ -48,7 +48,7 @@ public class Logic extends Thread {
 
                                     // @todo this shit is bugged as fuck
                                     GameObject toMoveUp = titleScreenGOsIt;
-                                    while (titleScreenGOs.indexOf(toMoveUp) != titleScreenGOs.size () - 1)
+                                    indexLoop: while (titleScreenGOs.indexOf(toMoveUp) != titleScreenGOs.size () - 1)
                                     {
 
                                         int i = titleScreenGOs.indexOf(toMoveUp);
@@ -56,7 +56,7 @@ public class Logic extends Thread {
 
                                     }
 
-                                    break;
+                                    break iteratorLoop;
 
                                 }
 
