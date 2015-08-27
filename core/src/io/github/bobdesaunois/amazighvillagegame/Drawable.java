@@ -26,8 +26,6 @@ abstract class Drawable
     public void render ()
     {
 
-        final float PLAYER_WIDTH = 300;
-
         float drawX = pos.x;
         float drawY = pos.y;
 
