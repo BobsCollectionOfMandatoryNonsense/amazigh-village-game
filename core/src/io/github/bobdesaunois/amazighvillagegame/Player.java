@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector3;
 
 public class Player {
 
-    public static final float  MOVEMENT_SPEED   = 8.75f;
+    public static final float  MOVEMENT_SPEED   = 40.75f;
     public static final int    TEXTURE_WIDTH    = 300;
 
     private GameObject gameObject;
