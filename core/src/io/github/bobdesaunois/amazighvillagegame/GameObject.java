@@ -6,15 +6,11 @@ import com.badlogic.gdx.math.Vector3;
 public class GameObject extends Drawable {
 
     private GameObjectType  type;
-    private Dialog          dialog;
     private Interaction interaction;
 
     public GameObjectType   getType ()      { return type; }
-    public Dialog           getDialog ()    { return dialog; }
     public float            getWidth ()     { return type.getWidth (); }
     public float            getHeight ()    { return type.getHeight (); }
-
-    public void setDialog (Dialog dialog)   { this.dialog = dialog; }
 
     public GameObject (GameObjectType type, Vector3 pos)
     {

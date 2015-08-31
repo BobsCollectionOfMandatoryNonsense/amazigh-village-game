@@ -3,20 +3,24 @@ package io.github.bobdesaunois.amazighvillagegame;
 public class Quest {
 
     private String name;
-    private boolean complete;
+    private String instructions;
+    private String congradulations;
+    private QuestState questState;
 
-    private Quest (String name, boolean complete)
+    public String getName ()            { return name; }
+    public String getInstructions ()    { return instructions; }
+    public String getCongradulations () { return congradulations; }
+    public QuestState getQuestState ()  { return questState; }
+
+    public void setQuestState (QuestState questState) { this.questState = questState; }
+
+    public Quest (String name, QuestState questState, String instructions, String congradulations)
     {
 
-        this.name       = name;
-        this.complete   = complete;
-
-    }
-
-    public Quest getInstance (String name, boolean complete)
-    {
-
-        return new Quest (name, complete);
+        this.name               = name;
+        this.questState         = questState;
+        this.instructions       = instructions;
+        this.congradulations    = congradulations;
 
     }
 

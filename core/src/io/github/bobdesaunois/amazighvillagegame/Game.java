@@ -79,6 +79,8 @@ public class Game extends ApplicationAdapter
         input   = new Input ();
         logic   = new Logic ();
 
+        QuestManager.setupQuests ();
+
         SceneManager.setupScenes ();
         SceneManager.setCurrentScene (SceneManager.START_SCENE);
 
