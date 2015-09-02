@@ -33,17 +33,20 @@ public class Input extends InputAdapter
     private boolean pollMovementInput ()
     {
 
-        // Clear all dialog on movement
-        DialogManager.clear ();
-
         if (truePos.x > Gdx.graphics.getWidth () - 200)
         {
+
+            // Clear all dialog on movement
+            DialogManager.clear ();
 
             System.out.println ("RIGHT");
             Game.getPlayer().moveRight ();
             return true;
 
         } else if (truePos.x < 200) {
+
+            // Clear all dialog on movement
+            DialogManager.clear ();
 
             System.out.println ("LEFT");
             Game.getPlayer().moveLeft ();

@@ -41,8 +41,8 @@ public class SceneManager
                 10f,
                 new Vector3
                 (
-                    (Gdx.graphics.getWidth () / 8) - (Gdx.graphics.getWidth () / 3),
-                    Gdx.graphics.getHeight () - 400,
+                    (Gdx.graphics.getWidth () / 16) - (Gdx.graphics.getWidth () / 3),
+                    Gdx.graphics.getHeight () - 50,
                     0
                 ),
                 false
@@ -58,7 +58,7 @@ public class SceneManager
                 new Vector3
                 (
                     (Gdx.graphics.getWidth () / 6) - (Gdx.graphics.getWidth () / 4),
-                    Gdx.graphics.getHeight () - 650,
+                    Gdx.graphics.getHeight () - 280,
                     0
                 ),
                 false
