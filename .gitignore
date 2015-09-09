@@ -11,6 +11,8 @@ gradle/
 gradlew
 gradlew.bat
 amazigh-village-game.iml
+amazigh-village-game.ipr
+amazigh-village-game.iws
 build.gradle
 gradle.properties
 local.properties
